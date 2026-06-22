@@ -1,0 +1,69 @@
+const int sensorPin = A0;
+const int sampleCount = 10;
+
+// Kendi sistemimizde belirlediğimiz referanslar
+const float darkRaw  = 1023.0; // Işık kapalı / tam karanlık
+const float blankRaw = 13.0;  // Işık açık + boş küvet
+
+float rawValue;
+float transmittance;
+float absorbance;
+float totalAbsorbance = 0;
+int readIndex = 0;
+float averageAbsorbance;
+
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  rawValue = analogRead(sensorPin);
+
+  // LM393 modül sizde ters çalışıyordu:
+  // daha fazla ışık => daha küçük raw değer
+  float I_blank = darkRaw - blankRaw;
+  float I_sample = darkRaw - rawValue;
+
+  if (I_blank <= 0) {
+    Serial.println("HATA: darkRaw ve blankRaw degerleri gecersiz.");
+    delay(1000);
+    return;
+  }
+
+  if (I_sample < 0.0001) {
+    I_sample = 0.0001;
+  }
+
+  transmittance = I_sample / I_blank;
+
+  if (transmittance < 0.0001) transmittance = 0.0001;
+  if (transmittance > 1.0)    transmittance = 1.0;
+
+  absorbance = -log10(transmittance);
+
+  totalAbsorbance += absorbance;
+  readIndex++;
+
+  delay(200);
+
+  if (readIndex == sampleCount) {
+    averageAbsorbance = totalAbsorbance / sampleCount;
+
+    Serial.print("Raw Value: ");
+    Serial.println(rawValue);
+
+    Serial.print("Transmittance (%): ");
+    Serial.println(transmittance * 100.0, 2);
+
+    Serial.print("Absorbance: ");
+    Serial.println(absorbance, 4);
+
+    Serial.print("Average Absorbance: ");
+    Serial.println(averageAbsorbance, 4);
+
+    Serial.println("----------------------");
+
+    totalAbsorbance = 0;
+    readIndex = 0;
+  }
+}

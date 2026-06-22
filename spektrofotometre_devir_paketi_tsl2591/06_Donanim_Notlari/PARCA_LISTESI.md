@@ -1,0 +1,20 @@
+# Son Donanım Parça Listesi
+
+| No | Parça | Durum | Not |
+| --- | --- | --- | --- |
+| 1 | TSL2591 dijital ışık sensörü | Ana sensör / var | I2C haberleşme, yüksek hassasiyetli ışık ölçümü. Arduino Uno bağlantısı: SDA A4, SCL A5, VCC 5V veya modüle göre 3.3V/5V, GND. |
+| 2 | Arduino Uno veya uyumlu kart | Ana kontrol kartı / var | Serial Monitor ve Python arayüzü için 9600 baud kullanılabilir. ESP8266/AS7262 geçişi yapılırsa ayrı klasörde opsiyonel not olarak tutulmalıdır. |
+| 3 | 5 mm yeşil LED 520-525 nm | Alınacak / önerilen | Vişne suyu gibi kırmızı renkli numunelerde fark oluşturmak için uygundur. Ürün açıklamasında nm değeri yazmalıdır. |
+| 4 | 5 mm yellow-green LED 550 veya 565-570 nm | Alınacak / 550 nm'e yakın | 550 nm doğrudan bulunamazsa 565-570 nm seçilebilir. Raporda kullanılan gerçek dalga boyu yazılmalıdır. |
+| 5 | 5 mm amber/turuncu LED 590-600 veya 600-610 nm | Alınacak / ikinci kanal | Farklı dalga boyunda karşılaştırmalı ölçüm için kullanılabilir. |
+| 6 | 5 mm kırmızı LED 650-660 nm | Alınacak / üçüncü kanal | Kırmızı dalga boyunda kontrol ölçümü için uygundur. |
+| 7 | 220 ohm ve 330 ohm direnç seti | Alınacak / yedek | LED testlerinde akımı sınırlamak için. Her LED ayrı blank kalibrasyonu ile kullanılmalıdır. |
+| 8 | Sabit akım LED sürücü modülü | Önerilen geliştirme | LED parlaklığını daha kararlı tutar; ölçüm tekrarlanabilirliğini artırır. |
+| 9 | Lehimli pin header, jumper kablo, makaron | Alınacak / yedek | Sensör pinlerinde temassızlığı azaltmak için pin header lehimlenmeli, kablo mekanik olarak sabitlenmelidir. |
+| 10 | Küvet | Var / yedek alınabilir | Blank ve numune ölçümlerinde aynı yönle yerleştirilmelidir. |
+| 11 | Siyah optik tüp ve 3D baskı kutu | Var / dosyası eklenmeli | LED - tüp - küvet - sensör hizasını sabitler, ortam ışığını azaltır. |
+| 12 | USB kablo ve 5V adaptör | Alınacak / yedek | Zayıf USB kablo ölçümde gürültü ve bağlantı sorunlarına neden olabilir. |
+
+## LED Kararı
+
+Ana yeşil ölçüm için 520-525 nm 5 mm yeşil LED alınabilir. 550 nm özellikle isteniyorsa 550 nm veya 565-570 nm yellow-green LED seçilmeli ve raporda gerçek nm değeri yazılmalıdır. 590-600 nm amber ve 650-660 nm kırmızı LED karşılaştırmalı ölçümler için eklenebilir.

@@ -1,0 +1,8 @@
+Hocam merhaba,
+
+Mezuniyetim nedeniyle Arduino tabanlı düşük maliyetli spektrofotometre projesini düzenli bir devir paketi olarak hazırladım. Paket içinde kullanım el kitapçığı, parça listesi, envanter kontrol listesi, kod klasörleri, rapor/görsel/3D dosya alanları ve veri kayıt örnekleri bulunmaktadır.
+
+Ana sürüm TSL2591 dijital ışık sensörüyle çalışacak şekilde dokümante edilmiştir. Ölçüm akışı dark, blank ve sample kalibrasyonuna dayanır. LED tarafında dalga boyu ürün açıklamasında yazan 5 mm LED'lerin kullanılması önerilmiştir.
+
+Saygılarımla,
+Samet Kılıç
